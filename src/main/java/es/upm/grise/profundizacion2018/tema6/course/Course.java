@@ -3,6 +3,7 @@ package es.upm.grise.profundizacion2018.tema6.course;
 import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
 import com.google.java.contract.Invariant;
+import com.google.java.contract.Ensures;
 
 @Invariant({"numRegistrations >= 1","numRegistrations <= 6"})
 public abstract class Course implements Comparable <Course> {
@@ -18,6 +19,7 @@ public abstract class Course implements Comparable <Course> {
 		return courseData.getLevel();
 	}
 	
+	@Ensures("result >= 0")
 	public abstract double getFee();
 
 	public String getName() {

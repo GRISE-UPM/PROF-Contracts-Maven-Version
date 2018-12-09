@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
 import com.google.java.contract.Invariant;
+import com.google.java.contract.Ensures;
 
 @Invariant("courses.size() <= 10")
 public class Registration {
@@ -17,6 +18,7 @@ public class Registration {
 		courses.add(course);
 	}
 	
+	@Ensures("result >= 0")
 	public double getRegistrationFee() {
 		
 		double total = 0;
@@ -30,6 +32,7 @@ public class Registration {
 		
 	}
 	
+	@Ensures("total <= 36")
 	public int getTotalCredits() {
 		
 		int total = 0;
