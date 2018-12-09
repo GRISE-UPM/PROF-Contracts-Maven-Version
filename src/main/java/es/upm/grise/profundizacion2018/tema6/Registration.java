@@ -6,6 +6,9 @@ import java.util.TreeSet;
 
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
+import com.google.java.contract.Invariant;
+
+@Invariant("courses.size() <= 10")
 public class Registration {
 	
 	Set<Course> courses = new TreeSet<Course>();
