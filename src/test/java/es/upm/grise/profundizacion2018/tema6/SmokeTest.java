@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import com.google.java.contract.PostconditionError;
 import com.google.java.contract.PreconditionError;
 
 import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.*;
@@ -11,6 +12,7 @@ import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.*;
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 import es.upm.grise.profundizacion2018.tema6.course.DegreeCourse;
 import es.upm.grise.profundizacion2018.tema6.course.MasterCourse;
+import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
 public class SmokeTest {
 
@@ -56,14 +58,14 @@ public class SmokeTest {
 		new MasterCourse(CORRECT_MASTER_COURSE, NUM_REGISTRATION);
 	}
 	
-	@Test(expected = PreconditionError.class)
+	@Test(expected = PostconditionError.class)
 	public void degreeCoursesCantBeInstantiatedWithLessThan1Credits() {
 		
 		int NUM_REGISTRATION = 1;
 		new DegreeCourse(INCORRECT_DEGREE_COURSE_ZERO_CREDITS, NUM_REGISTRATION);
 	}
 	
-	@Test(expected = PreconditionError.class)
+	@Test(expected = PostconditionError.class)
 	public void degreeCoursesCantBeInstantiatedWithMoreThan6Credits() {
 		
 		int NUM_REGISTRATION = 1;
@@ -108,17 +110,17 @@ public class SmokeTest {
 		
 		Registration registration = new Registration();
 		
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
+		registration.addCourse(new DegreeCourse(TEST_COURSE1, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE2, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE3, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE4, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE5, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE6, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE7, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE8, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE9, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE10, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE11, 6));
 	}
 	
 	@Test(expected = PreconditionError.class)
@@ -126,26 +128,50 @@ public class SmokeTest {
 		
 		Registration registration = new Registration();
 		
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
-		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 1));
+		registration.addCourse(new DegreeCourse(TEST_COURSE1, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE2, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE3, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE4, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE5, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE6, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE7, 1));
 	}
 	
-	//TODO
-	@Test(expected = PreconditionError.class)
+	class DegreeCourseNegativeFeeTest extends DegreeCourse {
+
+		final private static double fee = -1;
+		
+		public DegreeCourseNegativeFeeTest(CourseData course, int numRegistrations) {
+			super(course, numRegistrations);
+		}
+		
+		@Override
+		public double getFee() {
+			return fee;
+		}
+		
+	}
+	
+	@Test(expected = PostconditionError.class)
 	public void courseCantHaveNegativeFee() {
 		
-		Course course = new DegreeCourse(CORRECT_DEGREE_COURSE, 1);
+		new DegreeCourseNegativeFeeTest(CORRECT_DEGREE_COURSE, 2);
 	}
 	
-	//TODO
+	class RegistrationNegativeFeeTest extends Registration {
+		
+		@Override
+		public double getRegistrationFee() {
+			return -1;
+		}
+		
+	}
+	
 	@Test(expected = PreconditionError.class)
 	public void registrationCantHaveNegativeFee() {
 		
-		Registration registration = new Registration();
+		Registration registration = new RegistrationNegativeFeeTest();
+		
+		registration.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE, 6));
 	}
 }
