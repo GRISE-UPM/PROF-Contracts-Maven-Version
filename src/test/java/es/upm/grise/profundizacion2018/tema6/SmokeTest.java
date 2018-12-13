@@ -1,6 +1,6 @@
 package es.upm.grise.profundizacion2018.tema6;
 
-import static org.junit.Assert.*;
+import java.util.UUID;
 
 import org.junit.Test;
 
@@ -63,5 +63,26 @@ public class SmokeTest {
 	public void cannotRegisterDegreeCourseAsMasterCourse() {
 		new MasterCourse(CORRECT_DEGREE_COURSE, 2);
 	}
+	
+	@Test(expected = PreconditionError.class)
+	public void cannotHaveMoreThanTenCoursesInARegistration() {
+		Registration r = new Registration();
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE0, 3));
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE1, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE2, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE3, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE4, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE5, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE6, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE7, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE8, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE9, 3));	
+		r.addCourse(new MasterCourse(CORRECT_MASTER_COURSE10, 3));	
+	}
+	
+	
+	
+	
+	
 
 }
