@@ -41,5 +41,16 @@ public class SmokeTest {
 	public void masterCourseWithMoreThanSixCreditShouldFail() {
 		new MasterCourse(CURSO_MASTER_7_CREDITOS, 1);
 	}
+	
+	
+	@Test(expected = PreconditionError.class)
+	public void studentCannotRegisterACoureMoreThanSixTimes() {
+		new MasterCourse(CORRECT_DEGREE_COURSE, 7);
+	}
+	
+	@Test(expected = PreconditionError.class)
+	public void studentCannotRegisterACoureLessThanOneTimes() {
+		new MasterCourse(CORRECT_DEGREE_COURSE, 0);
+	}
 
 }
