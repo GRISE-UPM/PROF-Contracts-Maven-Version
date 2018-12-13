@@ -116,4 +116,10 @@ public class SmokeTest {
 		new MasterCourseDouble(CORRECT_MASTER_COURSE0, 3, -5);	
 	}
 
+	
+	@Test(expected = InvariantError.class)
+	public void registrationFeeCannotBeNegative() {
+		Registration r = new Registration();
+		r.addCourse(new MasterCourseDouble(CORRECT_MASTER_COURSE0, 3, -5));	
+	}
 }

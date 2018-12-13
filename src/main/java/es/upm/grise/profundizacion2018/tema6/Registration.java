@@ -9,12 +9,12 @@ import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
-@Invariant("getTotalCredits() <= 36")
+@Invariant({"getTotalCredits() <= 36"})
 public class Registration {
 
 	Set<Course> courses = new TreeSet<Course>();
 	
-	@Requires({"getNumberCourses() < 10"})
+	@Requires({"getNumberCourses() < 10", "getRegistrationFee() + course.getFee() > 0"})
 	public void addCourse(Course course) {
 		courses.add(course);
 	}
