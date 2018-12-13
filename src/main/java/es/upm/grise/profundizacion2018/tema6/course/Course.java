@@ -20,7 +20,7 @@ public abstract class Course implements Comparable <Course> {
 		return courseData.getLevel();
 	}
 	
-	@Ensures("result >= 0.0")
+	@Ensures("result > 0")
 	public abstract double getFee();
 
 	public String getName() {

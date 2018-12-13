@@ -20,7 +20,7 @@ public class Registration {
 		courses.add(course);
 	}
 	
-	@Ensures("result > -1")
+	@Ensures("result > 0")
 	public double getRegistrationFee() {
 		
 		double total = 0;

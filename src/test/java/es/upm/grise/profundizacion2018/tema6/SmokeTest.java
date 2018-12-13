@@ -84,4 +84,5 @@ public class SmokeTest {
 		registration.addCourse(new MasterCourse(NEGATIVE_MASTER_COURSE, NUM_REGISTRATION));
 		registration.getRegistrationFee();
 	}
+	
 }
