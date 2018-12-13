@@ -1,7 +1,5 @@
 package es.upm.grise.profundizacion2018.tema6;
 
-import java.util.UUID;
-
 import org.junit.Test;
 
 import com.google.java.contract.InvariantError;
@@ -11,9 +9,26 @@ import com.google.java.contract.PreconditionError;
 import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.*;
 import es.upm.grise.profundizacion2018.tema6.course.DegreeCourse;
 import es.upm.grise.profundizacion2018.tema6.course.MasterCourse;
+import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
 public class SmokeTest {
-
+	
+	class MasterCourseDouble extends MasterCourse {
+		
+		private double feePerCredit;
+		
+		public MasterCourseDouble(CourseData course, int numRegistrations, double feePerCredit) {
+			super(course, numRegistrations);
+			this.feePerCredit = feePerCredit;
+		}
+		
+		@Override
+		public double getFee() {
+			return feePerCredit * courseData.getCredits() * numRegistrations;
+		}
+		
+	}
+	
 	@Test
 	public void degreeCoursesCanBeInstantiatedWithDEGREELevelCoursesOnly() {
 		
@@ -93,6 +108,12 @@ public class SmokeTest {
 		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE4, 3));
 		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE5, 3));	
 		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE6, 3));	
+	}
+	
+	
+	@Test(expected = InvariantError.class)
+	public void courseFeeCannotBeNegative() {
+		new MasterCourseDouble(CORRECT_MASTER_COURSE0, 3, -5);	
 	}
 
 }

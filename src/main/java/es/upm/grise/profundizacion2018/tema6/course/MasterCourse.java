@@ -7,7 +7,7 @@ import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
 public class MasterCourse extends Course {
 	
-	final private static double feePerCredit = 35.44;
+	final static double feePerCredit = 35.44;
 
 	@Requires("course.getLevel().equals(\"MASTER\")")
 	@Ensures({"getCredits() >= 1", "getCredits() <= 6"})
