@@ -1,5 +1,5 @@
 # Document here the issues associated to items g) and h)
-Habia pensado poner como invariante getRegistrationFee()>0 pero me saltaba otro error en otro test, entonces añado la condicion a añadir course con que getRegistrationFee() + coure.getFee() sea mayor de 0.
+Habia pensado poner como invariante getRegistrationFee()>0 pero me saltaba otro error en otro test, entonces añado la condicion a añadir course con que getRegistrationFee() + coure.getFee()x  sea mayor de 0.
 
 
 # P.D:
