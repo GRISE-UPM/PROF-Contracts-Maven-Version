@@ -1,5 +1,7 @@
 package es.upm.grise.profundizacion2018.tema6.values;
 
+
+// @Invariant("credits >= 1 && credits <= 6")
 public enum CourseDataValues {
 	
 	GPTI 			("DEGREE", "Gestion de Procesos de Tecnologias de la Informacion", 4),
@@ -8,7 +10,7 @@ public enum CourseDataValues {
 	private String level;
 	private String name;
 	private int credits;
-
+	
 	CourseDataValues(String level, String name, int credits) {
 		this.level = level;
 		this.name = name;
@@ -22,7 +24,7 @@ public enum CourseDataValues {
 	public String getName() {
 		return name;
 	}
-
+	
 	public int getCredits() {
 		return credits;
 	}
