@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
+import com.google.java.contract.InvariantError;
 import com.google.java.contract.PostconditionError;
 import com.google.java.contract.PreconditionError;
 
@@ -64,6 +65,7 @@ public class SmokeTest {
 		new MasterCourse(CORRECT_DEGREE_COURSE, 2);
 	}
 	
+	
 	@Test(expected = PreconditionError.class)
 	public void cannotHaveMoreThanTenCoursesInARegistration() {
 		Registration r = new Registration();
@@ -81,8 +83,16 @@ public class SmokeTest {
 	}
 	
 	
-	
-	
-	
+	@Test(expected = InvariantError.class)
+	public void registrationCreditsHaveToBeLessThanThirtySeven() {
+		Registration r = new Registration();
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE0, 3));
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE1, 3));
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE2, 3));
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE3, 3));
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE4, 3));
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE5, 3));	
+		r.addCourse(new DegreeCourse(CORRECT_DEGREE_COURSE6, 3));	
+	}
 
 }

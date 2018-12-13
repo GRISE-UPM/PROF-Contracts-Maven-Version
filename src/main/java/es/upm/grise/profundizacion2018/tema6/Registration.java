@@ -4,10 +4,12 @@ package es.upm.grise.profundizacion2018.tema6;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
-
+@Invariant("getTotalCredits() <= 36")
 public class Registration {
 
 	Set<Course> courses = new TreeSet<Course>();
