@@ -10,6 +10,7 @@ public class DegreeCourse extends Course {
 
 	final private static double fee = 27.33;
 
+	@Requires("course.getLevel().equals(\"DEGREE\")")
 	@Ensures({"getCredits() >= 1", "getCredits() <= 6"})
 	public DegreeCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);

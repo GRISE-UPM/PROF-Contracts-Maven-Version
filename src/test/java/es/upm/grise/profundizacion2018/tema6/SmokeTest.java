@@ -45,12 +45,23 @@ public class SmokeTest {
 	
 	@Test(expected = PreconditionError.class)
 	public void studentCannotRegisterACoureMoreThanSixTimes() {
-		new MasterCourse(CORRECT_DEGREE_COURSE, 7);
+		new MasterCourse(CORRECT_MASTER_COURSE, 7);
 	}
 	
 	@Test(expected = PreconditionError.class)
 	public void studentCannotRegisterACoureLessThanOneTimes() {
-		new MasterCourse(CORRECT_DEGREE_COURSE, 0);
+		new MasterCourse(CORRECT_MASTER_COURSE, 0);
+	}
+	
+	
+	@Test(expected = PreconditionError.class)
+	public void cannotRegisterMasterCourseAsDegreeCourse() {
+		new DegreeCourse(CORRECT_MASTER_COURSE, 2);
+	}
+	
+	@Test(expected = PreconditionError.class)
+	public void cannotRegisterDegreeCourseAsMasterCourse() {
+		new MasterCourse(CORRECT_DEGREE_COURSE, 2);
 	}
 
 }
