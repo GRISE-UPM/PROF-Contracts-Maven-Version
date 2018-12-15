@@ -1,12 +1,13 @@
-package es.upm.grise.profundizacion2018.tema6;
+package es.upm.grise.prof2018.contracts;
 
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-import es.upm.grise.profundizacion2018.tema6.course.Course;
-
 import com.google.java.contract.Invariant;
+
+import es.upm.grise.prof2018.contracts.course.Course;
+
 import com.google.java.contract.Ensures;
 
 @Invariant("courses.size() <= 10")
@@ -14,6 +15,7 @@ public class Registration {
 	
 	Set<Course> courses = new TreeSet<Course>();
 	
+	@Ensures("getTotalCredits() <= 36")
 	public void addCourse(Course course) {
 		courses.add(course);
 	}
@@ -32,7 +34,7 @@ public class Registration {
 		
 	}
 	
-	@Ensures("total <= 36")
+	//@Ensures("result <= 36")
 	public int getTotalCredits() {
 		
 		int total = 0;

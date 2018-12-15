@@ -1,4 +1,4 @@
-package es.upm.grise.profundizacion2018.tema6.values;
+package es.upm.grise.prof2018.contracts.values;
 
 import com.google.java.contract.Invariant;
 

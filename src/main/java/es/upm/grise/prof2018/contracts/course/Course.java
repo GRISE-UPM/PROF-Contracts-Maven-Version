@@ -1,8 +1,9 @@
-package es.upm.grise.profundizacion2018.tema6.course;
-
-import es.upm.grise.profundizacion2018.tema6.values.CourseData;
+package es.upm.grise.prof2018.contracts.course;
 
 import com.google.java.contract.Invariant;
+
+import es.upm.grise.prof2018.contracts.values.CourseData;
+
 import com.google.java.contract.Ensures;
 
 @Invariant({"numRegistrations >= 1","numRegistrations <= 6"})
