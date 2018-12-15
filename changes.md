@@ -1,1 +1,3 @@
 # Document here the issues associated to items g) and h)
+Si el enunciado se interpreta como que los importes no pueden ser 0 ni negativo, puede haber algún tipo de problema al probar los contratos, ya que cuando se crea una nueva matírcula, inicialmente no tienen ninguna asigatura asociada y por lo tanto su importe es cero.
+Como en este caso se ha interpretado incluyendo el cero como un importe válido, no se ha visto ningún problema al implementar y probar estos contratos.
