@@ -25,9 +25,12 @@ public enum CourseDataValuesTest implements CourseData {
 	CORRECT_MASTER_COURSE_6 ("MASTER", "Correct degree course 6", 1),
 	CORRECT_MASTER_COURSE_7 ("MASTER", "Correct degree course 7", 1),
 	CORRECT_MASTER_COURSE_8 ("MASTER", "Correct degree course 8", 1),
-	CORRECT_MASTER_COURSE_9 ("MASTER", "Correct degree course 8", 1),
-	CORRECT_MASTER_COURSE_10("MASTER", "Correct degree course 8", 1),
-	CORRECT_MASTER_COURSE_11("MASTER", "Correct degree course 8", 1);
+	CORRECT_MASTER_COURSE_9 ("MASTER", "Correct degree course 9", 1),
+	CORRECT_MASTER_COURSE_10("MASTER", "Correct degree course 10", 1),
+	CORRECT_MASTER_COURSE_11("MASTER", "Correct degree course 11", 1),
+	CORRECT_MASTER_COURSE_12("MASTER", "Correct degree course 11", 1),
+	CORRECT_MASTER_COURSE_13("MASTER", "Correct degree course 12", 1),
+	CORRECT_MASTER_COURSE_14("MASTER", "Correct degree course 13", 1);
 
 
 

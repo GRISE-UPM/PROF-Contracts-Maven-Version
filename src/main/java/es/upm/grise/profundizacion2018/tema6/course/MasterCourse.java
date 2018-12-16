@@ -10,13 +10,12 @@ public class MasterCourse extends Course {
 	final private static double feePerCredit = 35.44;
 	private final static String MASTER = "MASTER";
 
-	@Requires({"!isMaster(course)"})
+	@Requires({"isMaster(course)"})
 	public MasterCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);
 		this.courseData = course;
 	}
 
-	@Ensures("result > 0")
 	public double getFee() {
 		return feePerCredit * courseData.getCredits() * numRegistrations;
 	}

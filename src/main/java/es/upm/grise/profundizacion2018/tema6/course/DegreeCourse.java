@@ -16,12 +16,8 @@ public class DegreeCourse extends Course {
 		this.courseData = course;
 	}
 
-	@Ensures("result > 0")
 	@Override
 	public double getFee() {
-		if (numRegistrations == 1)
-			return 0;
-		else
 			return fee;
 	}
 
