@@ -25,7 +25,7 @@ public enum CourseDataValues {
 		return name;
 	}
 
-	@Requires("credits > 0 && credits < 7")
+	@Requires({"credits > 0", "credits < 7"})
 	public int getCredits() {
 		return credits;
 	}

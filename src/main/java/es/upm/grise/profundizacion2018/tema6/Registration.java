@@ -8,13 +8,13 @@ import es.upm.grise.profundizacion2018.tema6.course.Course;
 
 import com.google.java.contract.*;
 
-@Invariant("getNumberCourses() < 10")
+@Invariant("getRegistrationFee >= 0")
 public class Registration {
 	
 	Set<Course> courses = new TreeSet<Course>();
 	
 	@Requires("(getNumberCourses() < 10)")
-	@Ensures("getTotalCredits() < 37")
+	@Ensures({"getTotalCredits() < 37", "getRegistrationFee() >= 0"})
 	public void addCourse(Course course) {
 		courses.add(course);
 	}

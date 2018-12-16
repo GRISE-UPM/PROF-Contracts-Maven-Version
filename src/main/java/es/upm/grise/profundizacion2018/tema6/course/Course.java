@@ -10,7 +10,8 @@ public abstract class Course implements Comparable <Course> {
 	protected int numRegistrations;
 	protected CourseData courseData;
 
-	@Ensures("numRegistrations > 0 && numRegistrations < 7")
+	@Requires({"numRegistrations > 0", "numRegistrations < 7"})
+	@Ensures("getFee() >= 0")
 	public Course(int numRegistrations) {
 		this.numRegistrations = numRegistrations;
 	}
