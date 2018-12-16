@@ -1,4 +1,5 @@
 package es.upm.grise.profundizacion2018.tema6.values;
+import com.google.java.contract.*;
 
 public enum CourseDataValues {
 	
@@ -7,6 +8,7 @@ public enum CourseDataValues {
 	
 	private String level;
 	private String name;
+
 	private int credits;
 
 	CourseDataValues(String level, String name, int credits) {
@@ -23,6 +25,7 @@ public enum CourseDataValues {
 		return name;
 	}
 
+	@Requires("credits > 0 && credits < 7")
 	public int getCredits() {
 		return credits;
 	}
