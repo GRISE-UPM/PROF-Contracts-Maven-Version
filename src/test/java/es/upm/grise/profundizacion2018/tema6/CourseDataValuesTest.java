@@ -4,7 +4,8 @@ import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
 public enum CourseDataValuesTest implements CourseData {
 	
-	CORRECT_DEGREE_COURSE ("DEGREE", "Correct degree course", 5);
+	CORRECT_DEGREE_COURSE ("DEGREE", "Correct degree course", 5),
+	WRONG_DEGREE_COURSE ("DEGREE", "Wrong degree course", 38);
 	
 	private String level;
 	private String name;

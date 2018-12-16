@@ -8,6 +8,7 @@ public class DegreeCourse extends Course {
 
 	final private static double fee = 27.33;
 
+	//@Requires("numRegistrations >= 1 && numRegistrations <= 6")
 	public DegreeCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);
 		this.courseData = course;
