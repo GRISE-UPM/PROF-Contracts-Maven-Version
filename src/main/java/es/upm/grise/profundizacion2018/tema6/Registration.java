@@ -4,15 +4,24 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+import com.google.java.contract.Requires;
+
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
+
+@Invariant("this.getTotalCredits()<=36 && this.getRegistrationFee()>=0")
 public class Registration {
 	
 	Set<Course> courses = new TreeSet<Course>();
 	
+	@Ensures("getNumberCourses()<=10")
 	public void addCourse(Course course) {
 		courses.add(course);
+		course.getCredits();
 	}
+	
 	
 	public double getRegistrationFee() {
 		

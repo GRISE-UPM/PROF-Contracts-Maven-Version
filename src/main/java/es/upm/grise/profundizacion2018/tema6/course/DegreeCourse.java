@@ -1,16 +1,21 @@
 package es.upm.grise.profundizacion2018.tema6.course;
 
+import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 
 import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
+@Invariant("this.getCredits()>=1 && this.getCredits()<=6")
 public class DegreeCourse extends Course {
 
 	final private static double fee = 27.33;
 
+	
+	@Requires("course.getLevel().equals(\"DEGREE\")")
 	public DegreeCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);
 		this.courseData = course;
+		
 	}
 
 	@Override

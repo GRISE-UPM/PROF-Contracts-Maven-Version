@@ -1,23 +1,22 @@
-package es.upm.grise.profundizacion2018.tema6.course;
+package es.upm.grise.profundizacion2018.tema6;
 
-import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 
+import es.upm.grise.profundizacion2018.tema6.course.Course;
 import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 
-@Invariant("this.getCredits()>=1 && this.getCredits()<=6")
-public class MasterCourse extends Course {
-	
-	final private static double feePerCredit = 35.44;
+public class TestMasterCourse extends Course {
+
+	double feePerCredit = 35.44;
 	
 	@Requires("course.getLevel().equals(\"MASTER\")")
-	public MasterCourse(CourseData course, int numRegistrations) {
+	public TestMasterCourse(CourseData course, int numRegistrations,int fee) {
 		super(numRegistrations);
 		this.courseData = course;
+		this.feePerCredit=fee;
 	}
 	
 	public double getFee() {
 		return feePerCredit * courseData.getCredits() * numRegistrations;
 	}
-	
 }
