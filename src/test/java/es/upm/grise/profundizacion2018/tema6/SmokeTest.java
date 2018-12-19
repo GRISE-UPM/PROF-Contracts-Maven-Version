@@ -1,13 +1,34 @@
 package es.upm.grise.profundizacion2018.tema6;
 
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.CORRECT_DEGREE_COURSE;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.CORRECT_MASTER_COURSE;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.INCORRECT_DEGREE_COURSE_EXCESIVE_CREDITS;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.INCORRECT_DEGREE_COURSE_ZERO_CREDITS;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE10_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE11_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE12_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE1_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE1_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE2_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE2_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE3_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE3_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE4_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE4_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE5_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE5_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE6_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE6_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE7_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE7_6_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE8_1_CRED;
+import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.TEST_COURSE9_1_CRED;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.Test;
 
 import com.google.java.contract.PostconditionError;
 import com.google.java.contract.PreconditionError;
 
-import static es.upm.grise.profundizacion2018.tema6.CourseDataValuesTest.*;
+import org.junit.Test;
 
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 import es.upm.grise.profundizacion2018.tema6.course.DegreeCourse;
@@ -110,17 +131,18 @@ public class SmokeTest {
 		
 		Registration registration = new Registration();
 		
-		registration.addCourse(new DegreeCourse(TEST_COURSE1, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE2, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE3, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE4, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE5, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE6, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE7, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE8, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE9, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE10, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE11, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE1_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE2_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE3_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE4_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE5_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE6_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE7_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE8_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE9_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE10_1_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE11_1_CRED, 6));
+        registration.addCourse(new DegreeCourse(TEST_COURSE12_1_CRED, 6));
 	}
 	
 	@Test(expected = PreconditionError.class)
@@ -128,13 +150,13 @@ public class SmokeTest {
 		
 		Registration registration = new Registration();
 		
-		registration.addCourse(new DegreeCourse(TEST_COURSE1, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE2, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE3, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE4, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE5, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE6, 6));
-		registration.addCourse(new DegreeCourse(TEST_COURSE7, 1));
+		registration.addCourse(new DegreeCourse(TEST_COURSE1_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE2_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE3_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE4_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE5_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE6_6_CRED, 6));
+		registration.addCourse(new DegreeCourse(TEST_COURSE7_6_CRED, 1));
 	}
 	
 	class DegreeCourseNegativeFeeTest extends DegreeCourse {
