@@ -4,6 +4,9 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+
 import es.upm.grise.profundizacion2018.tema6.course.Course;
 
 public class Registration {
@@ -14,6 +17,9 @@ public class Registration {
 		courses.add(course);
 	}
 	
+	@Ensures({
+		"this.getRegistrationFee() > 0 "
+	})
 	public double getRegistrationFee() {
 		
 		double total = 0;
@@ -27,6 +33,9 @@ public class Registration {
 		
 	}
 	
+	@Ensures({
+		"this.getTotalCredits() > 0 && this.getTotalCredits() <= 36"
+	})
 	public int getTotalCredits() {
 		
 		int total = 0;
@@ -40,6 +49,9 @@ public class Registration {
 		
 	}
 	
+	@Ensures({
+		"this.getNumberCourses() > 0 && this.getNumberCourses() <= 10"
+	})
 	public int getNumberCourses() {
 		
 		int total = 0;

@@ -1,5 +1,6 @@
 package es.upm.grise.profundizacion2018.tema6.course;
 
+import com.google.java.contract.Ensures;
 import com.google.java.contract.Invariant;
 
 import es.upm.grise.profundizacion2018.tema6.values.CourseData;
@@ -24,6 +25,9 @@ public abstract class Course implements Comparable <Course> {
 		return courseData.getName();
 	}
 	
+	@Ensures({
+		"courseData.getCredits() > 0 && courseData.getCredits() <=6"
+	})
 	public int getCredits() {
 		return courseData.getCredits();
 	}
