@@ -8,6 +8,8 @@ public class DegreeCourse extends Course {
 
 	final private static double fee = 27.33;
 
+	@Requires("course.getCredits()>=1 && course.getCredits()<=6 && course.getLevel()==\"DEGREE\"")
+
 	public DegreeCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);
 		this.courseData = course;
