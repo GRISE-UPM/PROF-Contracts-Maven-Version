@@ -7,8 +7,9 @@ import es.upm.grise.profundizacion2018.tema6.values.CourseData;
 public class DegreeCourse extends Course {
 
 	final private static double fee = 27.33;
+	final private static String m = "MASTER";
 
-	//@Requires("numRegistrations >= 1 && numRegistrations <= 6")
+	@Requires("!isMaster(course)")
 	public DegreeCourse(CourseData course, int numRegistrations) {
 		super(numRegistrations);
 		this.courseData = course;
@@ -20,6 +21,12 @@ public class DegreeCourse extends Course {
 			return 0;
 		else
 			return fee;
+	}
+
+
+	private boolean isMaster(CourseData c){
+
+		return m.equals(c.getLevel());
 	}
 	
 }

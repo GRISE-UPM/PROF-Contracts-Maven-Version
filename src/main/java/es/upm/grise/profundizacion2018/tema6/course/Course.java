@@ -11,8 +11,8 @@ public abstract class Course implements Comparable <Course> {
 	protected CourseData courseData;
 
 
-	@Requires({"1 <= numRegistrations", "numRegistrations <= 6"})
-	public Course(int numRegistrations) throws PreconditionError {
+	@Requires("1 <= numRegistrations && numRegistrations <= 6")
+	public Course(int numRegistrations) {
 		this.numRegistrations = numRegistrations;
 	}
 	
