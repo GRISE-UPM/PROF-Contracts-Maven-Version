@@ -1,10 +1,10 @@
-package es.upm.grise.profundizacion2018.tema6;
+package es.upm.grise.profundizacion.contratos.registration;
 
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-import es.upm.grise.profundizacion2018.tema6.course.Course;
+import es.upm.grise.profundizacion.contratos.courses.Course;
 
 public class Registration {
 	

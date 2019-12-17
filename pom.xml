@@ -4,18 +4,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.upm.grise.profundizacion2018</groupId>
-	<artifactId>tema6</artifactId>
+	<groupId>es.upm.grise.profundizacion.contratos</groupId>
+	<artifactId>CourseRegistrationMavenVersion</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>CourseRegistration</name>
-	<url>http://maven.apache.org</url>
+	<name>CourseRegistrationMavenVersion</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<com.google.java.contract.classoutput>${project.basedir}/target/classes</com.google.java.contract.classoutput>
+		<com.google.java.contract.classpath>${user.home}/.m2/repository/io/konverge/cofoja/2.0.0/cofoja-2.0.0.jar</com.google.java.contract.classpath>
+		<com.google.java.contract.sourcepath>${project.basedir}/src/main/java</com.google.java.contract.sourcepath>
 	</properties>
 
 	<dependencies>
@@ -25,5 +27,90 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>io.konverge</groupId>
+			<artifactId>cofoja</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Set constraint on compilation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.0.0-M3</version>
+				<executions>
+					<execution>
+						<id>enforce-java-version</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.0</version>
+									<message>Invalid Maven version. It should, at least, be 3.0</message>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>1.7</version>
+									<message>Invalid Java version. It should, at most, be 1.7</message>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Run annotation processors -->
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>run-annotation-processors</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<configuration>
+							<processors>com.google.java.contract.core.apt.AnnotationProcessor</processors>
+						</configuration>
+					</execution>
+				</executions>
+
+			</plugin>
+
+			<!-- Disable annotation processors during normal compilation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+
+					<compilerArgs>
+						<arg>-proc:none</arg>
+						<arg>-Acom.google.java.contract.classoutput=${com.google.java.contract.classoutput}</arg>
+						<arg>-Acom.google.java.contract.classpath=${com.google.java.contract.classpath}</arg>
+						<arg>-Acom.google.java.contract.classoutput=${com.google.java.contract.sourcepath}</arg>
+					</compilerArgs>
+
+				</configuration>
+			</plugin>
+
+			<!-- Launch a java agent in the tests (to evaluate the contracts). A similar 
+				approach can be used in other run configurations -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>-ea -javaagent:${com.google.java.contract.classpath}</argLine>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
 </project>

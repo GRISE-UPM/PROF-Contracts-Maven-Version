@@ -1,10 +1,11 @@
-package es.upm.grise.profundizacion2018.tema6;
+package es.upm.grise.profundizacion.contratos;
 
-import es.upm.grise.profundizacion2018.tema6.values.CourseData;
+import es.upm.grise.profundizacion.contratos.values.CourseData;
 
 public enum CourseDataValuesTest implements CourseData {
 	
-	CORRECT_DEGREE_COURSE ("DEGREE", "Correct degree course", 5);
+	CORRECT_DEGREE_COURSE ("DEGREE", "Correct degree course", 5),
+	CORRECT_MASTER_COURSE ("MASTER", "Correct master course", 3);
 	
 	private String level;
 	private String name;

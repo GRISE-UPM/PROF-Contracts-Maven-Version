@@ -1,4 +1,4 @@
-package es.upm.grise.profundizacion2018.tema6.values;
+package es.upm.grise.profundizacion.contratos.values;
 
 public interface CourseData {
 
